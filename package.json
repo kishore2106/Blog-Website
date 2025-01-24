@@ -1,0 +1,18 @@
+{
+  "name": "dream-blog",
+  "version": "1.0.0",
+  "description": "Blog website to share their short term dreams in the form of blog.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kishore",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "morgan": "^1.10.0"
+  }
+}
