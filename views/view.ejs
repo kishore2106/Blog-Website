@@ -1,0 +1,43 @@
+<%- include("partials/header.ejs") %>
+<div class="container">
+  <div class="row">
+    <% Object.keys(blogs).forEach(key => { %>
+      <div class="col-md-4">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title title"><%= blogs[key].title %></h5>
+            <p class="card-text description"><%= blogs[key].description %></p>
+            <p class="card-created"><%= blogs[key].date %></p>
+            <a href="#" class="btn btn-primary">Edit</a>
+            <a href="#" onclick="deleteBlog('<%= blogs[key].title%>')" class="btn btn-danger">Delete</a>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+</div>
+<%- include("partials/footer.ejs") %>
+
+
+<script>
+  function deleteBlog(title) {
+    if (confirm(`Are you sure you want to delete the blog titled "${title}"?`)) {
+      fetch("/delete", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ title }),
+      })
+        .then((response) => response.text())
+        .then((message) => {
+          alert(message); // Show success or error message
+          window.location.reload(); // Reload the page to reflect changes
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          alert("Failed to delete the blog.");
+        });
+    }
+  }
+</script>
