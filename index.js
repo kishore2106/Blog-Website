@@ -27,8 +27,17 @@ app.post("/create", (req, res) => {
 });
 
 app.put("/update", (req, res) => {
-    res.send("Successfully updated!");
-});
+    const { originalTitle, title, description } = req.body;
+  
+    if (blogData[originalTitle]) {
+      // Update the blog entry
+      blogData[title] = { ...blogData[originalTitle], title, description };
+      if (originalTitle !== title) delete blogData[originalTitle]; // Remove old title key if updated
+      res.send("Successfully updated the blog!");
+    } else {
+      res.status(404).send("Blog not found!");
+    }
+  });
 
 app.delete("/delete", (req, res) => {
     const { title } = req.body; // Extract the title from the request body
@@ -48,7 +57,15 @@ app.get("/view", (req, res) => {
     res.render("view.ejs", {blogs: blogData});
 });
 
+app.get("/edit/:title", (req, res) => {
+    const blogTitle = req.params.title;
 
+    if (blogData[blogTitle]) {
+        res.render("edit.ejs", { blog: blogData[blogTitle] });
+    } else {
+        res.status(404).send("Blog not found!");
+    }
+});
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
