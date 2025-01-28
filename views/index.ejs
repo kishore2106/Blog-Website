@@ -1,26 +1,23 @@
 <%- include("partials/header.ejs") %>
 <div class="container mt-5">
-    <div class="row justify-content-center">
-      <div class="col-md-12"> <!-- Wider form by adjusting column size -->
-        <form action="/create" method="post">
-          <div class="mb-3">
-            <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
-          </div>
-  
-          <div class="mb-3">
-            <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control" id="title" name="title" placeholder="Enter the title" required>
-          </div>
-  
-          <div class="mb-3">
-            <label for="description" class="form-label">Description</label>
-            <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter the description" required></textarea>
-          </div>
-  
-          <button type="submit" class="btn btn-primary">Create</button>
-        </form>
-      </div>
-    </div>
+    <h2>Create Blog</h2>
+    <form action="/create" method="post">
+        <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+        </div>
+
+        <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" name="title" placeholder="Enter the title" required>
+        </div>
+
+        <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter the description" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
 </div>
 <%- include("partials/footer.ejs") %>

@@ -1,4 +1,5 @@
 <%- include("partials/header.ejs") %>
+<!-- <link rel="stylesheet" href="/styles/style.css"> -->
 <div class="container mt-5">
   <h2>Edit Blog</h2>
   <form id="editBlogForm">
@@ -11,7 +12,7 @@
       <label for="description" class="form-label">Description</label>
       <textarea class="form-control" id="description" name="description" rows="3" required><%= blog.description %></textarea>
     </div>
-    <button type="button" class="btn btn-primary" onclick="updateBlog()">Save Changes</button>
+    <button type="button" class="btn btn-primary" onclick="updateBlog()">Update</button>
   </form>
 </div>
 <%- include("partials/footer.ejs") %>

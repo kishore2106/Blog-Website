@@ -8,7 +8,6 @@
 
 .btn {
     width: 100px;
-    /* height: 100px; */
 }
 
 div {
@@ -23,7 +22,7 @@ div {
   
 
 form {
-    max-width: 600px; /* Adjust width as needed */
+    max-width: 400px; /* Adjust width as needed */
     width: 100%;
     margin: auto;
 }
