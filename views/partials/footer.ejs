@@ -1,4 +1,21 @@
-    <footer></footer>
+    <!-- <hr /> -->
+    <% if (locals.blogs) { %>
+        <div class="container-footer">
+    <% } else { %>
+        <div class="container-footer" style="position: fixed;">
+     <% } %>
+        <div class="footer mt-5">
+            <img src="/img/blog-icon.png" style="margin-left: 2rem;" width="25" height="25">
+            <span class="text-body-secondary" style="margin-left: 0.5rem;">© 2024 Company, Inc</span>
+        </div>
+        <div class="footer">
+            <ul class="nav list-unstyled ">
+                <li class="ms-3"><a class="text-body-secondary" href="#"><img src="/img/facebook.svg" height="30" width="30"></a></li>
+                <li class="ms-3"><a class="text-body-secondary" href="#"><img src="/img/instagram.svg" height="30" width="30"></a></li>
+                <li class="ms-3"><a class="text-body-secondary" href="#"><img src="/img/twitter.svg" height="30" width="30"></a></li>
+            </ul>
+        </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="/script.js"></script>
 </body>

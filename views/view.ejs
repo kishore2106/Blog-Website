@@ -1,19 +1,21 @@
 <%- include("partials/header.ejs") %>
 <div class="container">
-  <div class="row">
+  <h1>My Blogs</h1>
+  <!-- <div class="container-icon">
+    <a class="create-a" href="/"><img class="create-icon" src="/img/create-icon.png"></a>
+  </div> -->
+  <ul id="postlist" >
     <% Object.keys(blogs).forEach(key => { %>
-      <div class="col-md-4">
-        <div class="card" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title title"><%= blogs[key].title %></h5>
-            <p class="card-text description"><%= blogs[key].description %></p>
-            <p class="card-created"><%= blogs[key].date %></p>
-            <a href="/edit/<%= blogs[key].title %>" class="btn btn-primary">Edit</a>
-            <a href="#" onclick="deleteBlog('<%= blogs[key].title%>')" class="btn btn-danger">Delete</a>
-          </div>
+      <li id="<%= blogs[key].title %>" style="margin-top: 5px;">
+        <h2 name="blog-title" id="blog-title"><%= blogs[key].title %></h2>
+        <p name="blog-desc" id="blog-desc"><%= blogs[key].description %></p>
+        <h5 name="created-by" id="created-by"><i><%= blogs[key].name %>-<%= blogs[key].date %></i></h5>
+        <div class="view-btn">
+          <a href="/edit/<%= blogs[key].title %>" class="btn btn-primary" style="text-decoration: none;" >Edit</a>
+          <a href="#" onclick="deleteBlog('<%= blogs[key].title%>')" class="btn btn-danger" style="text-decoration: none;">Delete</a>
         </div>
-      </div>
-    <% }) %>
-  </div>
+      </li>
+    <% }) %>  
+  </ul>
 </div>
 <%- include("partials/footer.ejs") %>

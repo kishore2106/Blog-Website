@@ -13,17 +13,20 @@ app.use(express.static("public"));
 app.use(bodyParser.json())
 
 app.get("/", (req, res) => {
-    res.render("index.ejs");
+    res.render("index.ejs", {blogs: blogData});
 });
+
+app.get("/create", (req, res) => {
+    res.render("create.ejs");
+})
 
 app.post("/create", (req, res) => {
     day = new Date();
     req.body["date"] =  day.getDate() + "/" + (day.getMonth() + 1) + "/" + day.getFullYear();
     console.log("created at: " + day.getHours() + ":" + day.getMinutes() + ":" + day.getSeconds());
-    console.log(req.body);
+    console.log("inside /create", req.body);
     blogData[req.body.title] = req.body;
-    // blogData = req.body;
-    res.send("Successfully created!");
+    res.redirect("/view");
 });
 
 app.put("/update", (req, res) => {
@@ -59,7 +62,7 @@ app.get("/view", (req, res) => {
 
 app.get("/edit/:title", (req, res) => {
     const blogTitle = req.params.title;
-
+    console.log(blogTitle)
     if (blogData[blogTitle]) {
         res.render("edit.ejs", { blog: blogData[blogTitle] });
     } else {

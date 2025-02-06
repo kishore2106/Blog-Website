@@ -1,23 +1,57 @@
 <%- include("partials/header.ejs") %>
-<div class="container mt-5">
-    <h2>Create Blog</h2>
-    <form action="/create" method="post">
-        <div class="mb-3">
-        <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
-        </div>
 
-        <div class="mb-3">
-        <label for="title" class="form-label">Title</label>
-        <input type="text" class="form-control" id="title" name="title" placeholder="Enter the title" required>
+<div id="carouselExampleDark" class="carousel carousel-dark slide mx-4">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="10000">
+        <img src="/img/slide8.jpg" class="d-block w-100 slide" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>First slide label</h5>
+          <p>Some representative placeholder content for the first slide.</p>
         </div>
-
-        <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
-        <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter the description" required></textarea>
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <img src="/img/slide5.jpg" class="d-block w-100 slide" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Second slide label</h5>
+          <p>Some representative placeholder content for the second slide.</p>
         </div>
+      </div>
+      <div class="carousel-item">
+        <img src="/img/slide6.jpg" class="d-block w-100 slide" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Third slide label</h5>
+          <p>Some representative placeholder content for the third slide.</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
 
-        <button type="submit" class="btn btn-primary">Create</button>
-    </form>
-</div>
+  <div class="my-blogs home">
+    <ul id="postlist" style="margin: 0px">
+        <% Object.keys(blogs).forEach(key => { %>
+          <li id="<%= blogs[key].title %>" style="margin-left: 0px; margin-right: 2rem; margin-top: 2px; border: 0px; background-color: #f5f0f0; border-radius: 0%;">
+            <h2 name="blog-title" id="blog-title"><%= blogs[key].title %></h2>
+            <p name="blog-desc" id="blog-desc"><%= blogs[key].description %></p>
+            <h5 name="created-by" id="created-by"><i><%= blogs[key].name %>-<%= blogs[key].date %></i></h5>
+            <!-- <div class="view-btn">
+              <a href="/edit/<%= blogs[key].title %>" class="btn btn-primary" style="text-decoration: none;" >Edit</a>
+              <a href="#" onclick="deleteBlog('<%= blogs[key].title%>')" class="btn btn-danger" style="text-decoration: none;">Delete</a>
+            </div> -->
+          </li>
+        <% }) %>  
+      </ul>
+  </div>
 <%- include("partials/footer.ejs") %>
